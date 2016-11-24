@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background ="#eaeff7"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.heavensfall.waitertip.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/Dinero"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/dinero"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Camarera1"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/Dinero"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:id="@+id/Camarera1"
+        android:typeface="serif"
+        android:layout_height="40dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Camarera2"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/Camarera1"
+        android:gravity="center"
+        android:id="@+id/Camarera2"
+        android:typeface="serif"
+        android:textSize="18sp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:text="Camarera3"
+        android:layout_width="wrap_content"
+        android:id="@+id/Camarera3"
+        android:layout_below="@+id/Camarera2"
+        android:gravity="center"
+        android:typeface="serif"
+        android:layout_height="40dp"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:text="Camarera4"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/Camarera3"
+        android:gravity="center"
+        android:id="@+id/Camarera4"
+        android:typeface="serif"
+        android:layout_height="40dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Camarera5"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:id="@+id/Camarera5"
+        android:typeface="serif"
+        android:layout_height="40dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/C_Resta4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:id="@+id/Camarera6"
+        android:typeface="serif"
+        android:layout_height="40dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/C_Horas5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Camarera6" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas1"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_alignTop="@+id/Camarera1"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/Camarera2" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas2"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_alignBaseline="@+id/Camarera2"
+        android:layout_alignBottom="@+id/Camarera2"
+        android:layout_alignLeft="@+id/C_Horas1"
+        android:layout_alignStart="@+id/C_Horas1" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas3"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_alignBaseline="@+id/Camarera3"
+        android:layout_alignBottom="@+id/Camarera3"
+        android:layout_alignLeft="@+id/C_Horas2"
+        android:layout_alignStart="@+id/C_Horas2" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas4"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_above="@+id/Camarera5"
+        android:layout_alignLeft="@+id/C_Horas3"
+        android:layout_alignStart="@+id/C_Horas3" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas5"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_below="@+id/C_Horas4"
+        android:layout_alignLeft="@+id/C_Horas4"
+        android:layout_alignStart="@+id/C_Horas4" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas6"
+        android:textSize="18sp"
+        android:hint="@string/horas"
+        android:layout_width="60dp"
+        android:layout_below="@+id/C_Horas5"
+        android:layout_alignLeft="@+id/C_Horas5"
+        android:layout_alignStart="@+id/C_Horas5" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta1"
+        android:layout_alignBaseline="@+id/C_Horas1"
+        android:layout_alignBottom="@+id/C_Horas1"
+        android:layout_toRightOf="@+id/C_Horas2"
+        android:layout_toEndOf="@+id/C_Horas2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:hint="@string/resta" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta2"
+        android:hint="@string/resta"
+        android:layout_alignBaseline="@+id/C_Horas2"
+        android:layout_alignBottom="@+id/C_Horas2"
+        android:layout_alignLeft="@+id/C_Resta3"
+        android:layout_alignStart="@+id/C_Resta3" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta3"
+        android:hint="@string/resta"
+        android:layout_alignBaseline="@+id/C_Horas3"
+        android:layout_alignBottom="@+id/C_Horas3"
+        android:layout_alignLeft="@+id/C_Resta4"
+        android:layout_alignStart="@+id/C_Resta4" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta4"
+        android:hint="@string/resta"
+        android:layout_alignBaseline="@+id/Camarera4"
+        android:layout_alignBottom="@+id/Camarera4"
+        android:layout_alignLeft="@+id/C_Resta5"
+        android:layout_alignStart="@+id/C_Resta5" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta5"
+        android:hint="@string/resta"
+        android:layout_below="@+id/C_Resta4"
+        android:layout_alignLeft="@+id/C_Resta6"
+        android:layout_alignStart="@+id/C_Resta6" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Resta6"
+        android:hint="@string/resta"
+        android:layout_below="@+id/C_Resta5"
+        android:layout_alignLeft="@+id/C_Resta1"
+        android:layout_alignStart="@+id/C_Resta1" />
+
+    <Button
+        android:text="Calcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/Boton"
+        android:layout_below="@+id/C_Horas6"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/aviso"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/Aviso"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/C_Horas6"
+        android:layout_centerHorizontal="true"
+        android:typeface="sans"
+        android:layout_width="200dp"
+        android:textAlignment="center" />
+
+</RelativeLayout>
