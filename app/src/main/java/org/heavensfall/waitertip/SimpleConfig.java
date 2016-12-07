@@ -43,19 +43,19 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         boton = (Button) findViewById(R.id.botonconfig);
         spinner = (Spinner)findViewById(R.id.spinner);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String>adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,nCamareras);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         spinner.setSelection(prefs.getInt("NumeroCamareras",0));
 
-        camarera1.setText(prefs.getString("Nombre1",getString(R.string.camarero) + "1"));
-        camarera2.setText(prefs.getString("Nombre2",getString(R.string.camarero) + "2"));
-        camarera3.setText(prefs.getString("Nombre3",getString(R.string.camarero) + "3"));
-        camarera4.setText(prefs.getString("Nombre4",getString(R.string.camarero) + "4"));
-        camarera5.setText(prefs.getString("Nombre5",getString(R.string.camarero) + "5"));
-        camarera6.setText(prefs.getString("Nombre6",getString(R.string.camarero) + "6"));
+        camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
+        camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
+        camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
+        camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
+        camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
+        camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
 
         SeleccionarCamareras(0);
 
