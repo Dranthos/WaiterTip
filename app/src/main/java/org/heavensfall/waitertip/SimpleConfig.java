@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
     TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6;
     Button boton;
     Spinner spinner;
+    CheckBox divCheck;
 
     int camarerasActivas = 0;
     private static final String[]nCamareras = {"Numero de camareras","1","2","3","4","5","6"};
@@ -42,6 +44,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
 
         boton = (Button) findViewById(R.id.botonconfig);
         spinner = (Spinner)findViewById(R.id.spinner);
+        divCheck = (CheckBox) findViewById(R.id.Div);
 
         ArrayAdapter<String>adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,nCamareras);
@@ -49,6 +52,8 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         spinner.setSelection(prefs.getInt("NumeroCamareras",0));
+
+        divCheck.setChecked(prefs.getBoolean("divCheck", false));
 
         camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
         camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
@@ -104,13 +109,13 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         editor.putString("Nombre5",camarera5.getText().toString());
         editor.putString("Nombre6",camarera6.getText().toString());
         editor.putInt("NumeroCamareras", camarerasActivas);
+        editor.putBoolean("divCheck", divCheck.isChecked());
 
         editor.apply();
 
-        Toast.makeText(getApplicationContext(),"¡Nombres guardados!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Datos guardados con éxito", Toast.LENGTH_LONG).show();
 
         Intent returnIntent = new Intent();
-        //returnIntent.putExtra("result",result);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }

@@ -1,6 +1,9 @@
 package org.heavensfall.waitertip;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,14 +27,13 @@ import static org.heavensfall.waitertip.R.id.Dinero;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     List<Camarera> camareras = new ArrayList<>();
     List<String> resultados = new ArrayList<>();
 
     int camHabs = 0;
-
+    boolean divCheck = false;
     Button boton;
+    Activity estaActivity;
 
     TextView dinero;
     TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6, aviso;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
 
         GrabData();
-        SeleccionarCamareras(prefs.getInt("NumeroCamareras",0));
+        SeleccionarCamareras();
 
         boton.setOnClickListener(new View.OnClickListener() {
 
@@ -106,9 +108,9 @@ public class MainActivity extends AppCompatActivity {
             Camarera cam = new Camarera();
 
             cam.SetNombre(nombres.get(i).getText().toString());
-            cam.SetHoras(horas.get(i).getText().toString());
-            cam.activa = horas.get(i).isEnabled();
-            if(cam.activa && !cam.error) maxHoras += cam.GetHoras();
+            if(!divCheck) cam.SetHoras(horas.get(i).getText().toString());
+            cam.activa = nombres.get(i).isEnabled();
+            if(cam.activa && !cam.error && !divCheck) maxHoras += cam.GetHoras();
             cam.SetResta(restas.get(i).getText().toString());
 
             camareras.add(cam);
@@ -123,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                resultado = ((cam.GetHoras() * Dinero) / maxHoras) - cam.GetResta();
+                if (!divCheck) resultado = ((cam.GetHoras() * Dinero) / maxHoras) - cam.GetResta();
+                else resultado = (Dinero /camareras.size()) - cam.GetResta();
                 resultados.add(cam.GetNombre() + " se lleva " + resultado + "€");
             }
         }
@@ -135,30 +138,59 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void SeleccionarCamareras(int cantidad){
+    void SeleccionarCamareras(){
         List<TextView> nombres = Arrays.asList(camarera1, camarera2, camarera3, camarera4, camarera5, camarera6);
         List<EditText> horas = Arrays.asList(hora1, hora2, hora3, hora4, hora5, hora6);
         List<EditText> restas = Arrays.asList(resta1, resta2, resta3, resta4, resta5, resta6);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int cantidad = prefs.getInt("NumeroCamareras",0);
+
+        camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
+        camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
+        camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
+        camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
+        camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
+        camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
+        divCheck = prefs.getBoolean("divCheck", false);
+
         for (int i=0;i<=nombres.size() - 1;i++){
             nombres.get(i).setVisibility(View.INVISIBLE);
+            nombres.get(i).setEnabled(false);
             horas.get(i).setEnabled(false);
             horas.get(i).setHint("");
+            horas.get(i).setText("");
             restas.get(i).setEnabled(false);
             restas.get(i).setHint("");
         }
         for (int i=0;i<=cantidad - 1;i++){
-
             nombres.get(i).setVisibility(View.VISIBLE);
-            horas.get(i).setEnabled(true);
-            horas.get(i).setHint(getString(R.string.horas));
+            nombres.get(i).setEnabled(true);
+            if(!divCheck) {
+                horas.get(i).setEnabled(true);
+                horas.get(i).setHint(getString(R.string.horas));
+            }
             restas.get(i).setEnabled(true);
             restas.get(i).setHint(getString(R.string.resta));
         }
         //Si hay 0 camareras, muestro el aviso
         if(cantidad == 0){
-            boton.setVisibility(View.GONE);
-            aviso.setVisibility(View.VISIBLE);
+            new AlertDialog.Builder(this)
+                    .setTitle("No hay Empleados activos")
+                    .setMessage("Para que esto funcione debe haber empleados activos")
+                    .setPositiveButton("Ir a configuración", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(((Dialog) dialog).getContext(), SimpleConfig.class);
+                            startActivityForResult(intent, 1);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
         }
         else{
             boton.setVisibility(View.VISIBLE);
@@ -196,16 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-                camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
-                camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
-                camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
-                camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
-                camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
-                camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
-                SeleccionarCamareras(prefs.getInt("NumeroCamareras",0));
+                SeleccionarCamareras();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result

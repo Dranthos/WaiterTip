@@ -46,15 +46,6 @@
         android:id="@+id/Nombre4"
         android:hint="Introduce un nombre" />
 
-    <Button
-        android:text="Guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="79dp"
-        android:id="@+id/botonconfig"
-        android:layout_below="@+id/Nombre5"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,4 +89,23 @@
         android:layout_below="@+id/Nombre5"
         android:layout_alignLeft="@+id/Nombre5"
         android:layout_alignStart="@+id/Nombre5" />
+
+    <Button
+        android:text="Guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/botonconfig"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp" />
+
+    <CheckBox
+        android:text="@string/division_igualitaria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/Div"
+        android:layout_above="@+id/botonconfig"
+        android:layout_alignLeft="@+id/botonconfig"
+        android:layout_alignStart="@+id/botonconfig" />
 </RelativeLayout>
