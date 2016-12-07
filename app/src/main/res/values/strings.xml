@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">WaiterTip</string>
     <string name="action_settings">Ajustes</string>
-    <string name="aviso">Tienes que habilitar camareras para que esto funcione, puedes hacerlo en el menú de la esquina superior derecha.</string>
-    <string name="camarero">Camarero/a</string>
+    <string name="aviso">Tienes que habilitar empleados para que esto funcione, puedes hacerlo en el menú de la esquina superior derecha.</string>
+    <string name="trabajador">Empleado</string>
     <string name="dinero">Dinero</string>
     <string name="horas">Horas</string>
     <string name="resta">Resta</string>
