@@ -248,16 +248,4 @@
         android:layout_below="@+id/C_Horas6"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="@string/aviso"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:id="@+id/Aviso"
-        android:textSize="18sp"
-        android:layout_alignTop="@+id/C_Horas6"
-        android:layout_centerHorizontal="true"
-        android:typeface="sans"
-        android:layout_width="200dp"
-        android:textAlignment="center" />
-
 </RelativeLayout>

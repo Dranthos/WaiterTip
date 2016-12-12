@@ -95,17 +95,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/botonconfig"
+        android:layout_marginBottom="31dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:text="@string/division_igualitaria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
         android:id="@+id/Div"
         android:layout_above="@+id/botonconfig"
-        android:layout_alignLeft="@+id/botonconfig"
-        android:layout_alignStart="@+id/botonconfig" />
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:text="Deshabilitar restas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Rest"
+        android:layout_above="@+id/Div"
+        android:layout_alignLeft="@+id/Div"
+        android:layout_alignStart="@+id/Div" />
 </RelativeLayout>

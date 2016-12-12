@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WaiterTip</string>
     <string name="action_settings">Ajustes</string>
+    <string name="about">Acerca de</string>
     <string name="aviso">Tienes que habilitar empleados para que esto funcione, puedes hacerlo en el menú de la esquina superior derecha.</string>
     <string name="trabajador">Empleado</string>
     <string name="dinero">Dinero</string>

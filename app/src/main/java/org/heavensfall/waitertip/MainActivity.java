@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     int camHabs = 0;
     boolean divCheck = false;
+    boolean restCheck = false;
     Button boton;
-    Activity estaActivity;
 
     TextView dinero;
-    TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6, aviso;
-
-    ImageView flechaArriba;
+    TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6;
 
     EditText hora1, hora2, hora3, hora4, hora5, hora6;
     EditText resta1, resta2, resta3, resta4, resta5, resta6;
@@ -58,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         camarera4 = (TextView) findViewById(R.id.Camarera4);
         camarera5 = (TextView) findViewById(R.id.Camarera5);
         camarera6 = (TextView) findViewById(R.id.Camarera6);
-        aviso = (TextView) findViewById(R.id.Aviso);
 
         boton = (Button) findViewById(R.id.Boton);
 
@@ -111,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             if(!divCheck) cam.SetHoras(horas.get(i).getText().toString());
             cam.activa = nombres.get(i).isEnabled();
             if(cam.activa && !cam.error && !divCheck) maxHoras += cam.GetHoras();
-            cam.SetResta(restas.get(i).getText().toString());
+            if(!restCheck) cam.SetResta(restas.get(i).getText().toString());
 
             camareras.add(cam);
             }
@@ -153,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
         camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
         divCheck = prefs.getBoolean("divCheck", false);
+        restCheck = prefs.getBoolean("restCheck", false);
 
         for (int i=0;i<=nombres.size() - 1;i++){
             nombres.get(i).setVisibility(View.INVISIBLE);
@@ -166,15 +163,19 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0;i<=cantidad - 1;i++){
             nombres.get(i).setVisibility(View.VISIBLE);
             nombres.get(i).setEnabled(true);
-            if(!divCheck) {
+            if(!divCheck) {                         //Compruebo si esta habilitada la division igualitaria
                 horas.get(i).setEnabled(true);
                 horas.get(i).setHint(getString(R.string.horas));
             }
-            restas.get(i).setEnabled(true);
-            restas.get(i).setHint(getString(R.string.resta));
+            if (!restCheck) {                       //Compruebo si estan habilitadas las restas
+                restas.get(i).setEnabled(true);
+                restas.get(i).setHint(getString(R.string.resta));
+            }
         }
         //Si hay 0 camareras, muestro el aviso
         if(cantidad == 0){
+
+            boton.setVisibility(View.INVISIBLE);
             new AlertDialog.Builder(this)
                     .setTitle("No hay Empleados activos")
                     .setMessage("Para que esto funcione debe haber empleados activos")
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivityForResult(intent, 1);
                         }
                     })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             // do nothing
                         }
@@ -194,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             boton.setVisibility(View.VISIBLE);
-            aviso.setVisibility(View.GONE);
         }
     }
 
@@ -254,6 +254,10 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SimpleConfig.class);
             startActivityForResult(intent, 1);
+        }
+        if(id == R.id.action_about){
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

@@ -23,7 +23,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
     TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6;
     Button boton;
     Spinner spinner;
-    CheckBox divCheck;
+    CheckBox divCheck, restCheck;
 
     int camarerasActivas = 0;
     private static final String[]nCamareras = {"Numero de camareras","1","2","3","4","5","6"};
@@ -45,6 +45,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         boton = (Button) findViewById(R.id.botonconfig);
         spinner = (Spinner)findViewById(R.id.spinner);
         divCheck = (CheckBox) findViewById(R.id.Div);
+        restCheck = (CheckBox) findViewById(R.id.Rest);
 
         ArrayAdapter<String>adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,nCamareras);
@@ -54,6 +55,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         spinner.setSelection(prefs.getInt("NumeroCamareras",0));
 
         divCheck.setChecked(prefs.getBoolean("divCheck", false));
+        restCheck.setChecked(prefs.getBoolean("restCheck", false));
 
         camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
         camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
@@ -79,7 +81,6 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
 
         if(position == 0) Toast.makeText(parent.getContext(), "ATENCIÓN: ¡No has elegido camareras!", Toast.LENGTH_LONG).show();
         else SeleccionarCamareras(position);
-        //Toast.makeText(parent.getContext(), "Camareras seleccionadas: " + position, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -110,6 +111,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         editor.putString("Nombre6",camarera6.getText().toString());
         editor.putInt("NumeroCamareras", camarerasActivas);
         editor.putBoolean("divCheck", divCheck.isChecked());
+        editor.putBoolean("restCheck",restCheck.isChecked());
 
         editor.apply();
 
