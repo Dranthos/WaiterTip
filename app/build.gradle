@@ -7,10 +7,9 @@ android {
         applicationId "org.heavensfall.waitertip"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.1.1"
+        versionCode 4
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [HOCKEYAPP_APP_ID: "591f43330eab4be99b0bc4ef925f6b54"]
     }
     buildTypes {
         release {
@@ -25,12 +24,12 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    compile 'net.hockeyapp.android:HockeySDK:4.1.1'
     testCompile 'junit:junit:4.12'
+    compile files('libs/feedback_v6.jar')
 }
