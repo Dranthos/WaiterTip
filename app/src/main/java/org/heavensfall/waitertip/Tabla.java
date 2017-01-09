@@ -2,6 +2,8 @@ package org.heavensfall.waitertip;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -19,6 +21,8 @@ public class Tabla extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla);
+
+        Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.left_to_right);
 
         camarera1 = (TextView) findViewById(R.id.Lista1);
         camarera2 = (TextView) findViewById(R.id.Lista2);
@@ -42,6 +46,7 @@ public class Tabla extends AppCompatActivity {
         for (int i = 1; i <= camarerasHab; i++) {
             nombres.get(i - 1).setEnabled(true);
             nombres.get(i - 1).setText(lista.get(i - 1));
+            nombres.get(i - 1).startAnimation(animation1);
         }
 
         camarerasHab = 0;

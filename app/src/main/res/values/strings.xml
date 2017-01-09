@@ -8,4 +8,7 @@
     <string name="horas">Horas</string>
     <string name="resta">Resta</string>
     <string name="division_igualitaria">Division igualitaria</string>
+    <string name="feedback">Sugerencias</string>
+    <string name="About1">Creado por Miguel Torres Moreno (alias Dranthos) con la ayuda inestimable de su familia.</string>
+    <string name="Reset_tutorials">Reiniciar tutoriales</string>
 </resources>

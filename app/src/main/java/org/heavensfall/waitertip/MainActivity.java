@@ -10,17 +10,26 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.suredigit.inappfeedback.FeedbackDialog;
+import com.suredigit.inappfeedback.FeedbackSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 import static org.heavensfall.waitertip.R.id.Dinero;
 
@@ -39,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText hora1, hora2, hora3, hora4, hora5, hora6;
     EditText resta1, resta2, resta3, resta4, resta5, resta6;
+
+    private FeedbackDialog feedBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         GrabData();
         SeleccionarCamareras();
+        Tutorial();
 
         boton.setOnClickListener(new View.OnClickListener() {
 
@@ -140,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         List<EditText> restas = Arrays.asList(resta1, resta2, resta3, resta4, resta5, resta6);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        int cantidad = prefs.getInt("NumeroCamareras",0);
+        int cantidad = prefs.getInt("NumeroCamareras",1);
 
         camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
         camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
@@ -259,7 +271,117 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }
+        if(id == R.id.action_feedback){
+            FeedbackSettings feedbackSettings = new FeedbackSettings();
+
+            //SUBMIT-CANCEL BUTTONS
+            feedbackSettings.setCancelButtonText("Cancelar");
+            feedbackSettings.setSendButtonText("Enviar");
+
+            //DIALOG TEXT
+            feedbackSettings.setText("Hola, ¿Crees que podriamos mejorar en algo?");
+            feedbackSettings.setYourComments("Escribe lo que quieras aquí...");
+            feedbackSettings.setTitle("Enviar comentario");
+
+            //TOAST MESSAGE
+            feedbackSettings.setToast("Gracias por el comentario");
+            feedbackSettings.setToastDuration(Toast.LENGTH_SHORT);  // Default
+            //feedbackSettings.setToastDuration(Toast.LENGTH_LONG);
+
+            //RADIO BUTTONS
+            feedbackSettings.setRadioButtons(true); // Disables radio buttons
+            feedbackSettings.setBugLabel("Fallo");
+            feedbackSettings.setIdeaLabel("Idea");
+            feedbackSettings.setQuestionLabel("Pregunta");
+
+            //RADIO BUTTONS ORIENTATION AND GRAVITY
+            feedbackSettings.setOrientation(LinearLayout.HORIZONTAL); // Default
+            feedbackSettings.setOrientation(LinearLayout.VERTICAL);
+            feedbackSettings.setGravity(Gravity.RIGHT); // Default
+            feedbackSettings.setGravity(Gravity.LEFT);
+            feedbackSettings.setGravity(Gravity.CENTER);
+
+            //SET DIALOG MODAL
+            feedbackSettings.setModal(true); //Default is false
+
+            //DEVELOPER REPLIES
+            feedbackSettings.setReplyTitle("Mensaje del desarrollador");
+            feedbackSettings.setReplyCloseButtonText("Cerrar");
+            feedbackSettings.setReplyRateButtonText("¡Calificanos!");
+
+            //DEVELOPER CUSTOM MESSAGE (NOT SEEN BY THE END USER)
+            feedbackSettings.setDeveloperMessage("Ver. 1.1.2");
+
+            feedBack = new FeedbackDialog(this, "AF-CD88C8314001-31", feedbackSettings);
+            feedBack.show();
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(feedBack != null)feedBack.dismiss();
+    }
+
+    void Tutorial(){
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "Tuto1");
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(dinero)
+                        .setDelay(500)
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("Aqui va el dinero")
+                        .withRectangleShape()
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(camarera1)
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("A cada empleado le corresponde una fila")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(hora1)
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("Introduce aquí las horas que ha trabajado el empleado desde la ultima distribución del bote")
+                        .withRectangleShape()
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(resta1)
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("Si el empleado ha hecho uso de su dinero asignado antes de la distribución, puedes restarselo intrudiciendo la cifra aquí.")
+                        .withRectangleShape()
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(findViewById(R.id.toolbar))
+                        .withRectangleShape()
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("Desde aquí puedes acceder al menú que contiene el apartado opciones entre otros.")
+                        .build()
+        );
+
+        sequence.start();
     }
 }
