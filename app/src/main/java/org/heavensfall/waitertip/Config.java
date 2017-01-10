@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,8 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
-public class SimpleConfig extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+public class Config extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextView camarera1, camarera2, camarera3, camarera4, camarera5, camarera6;
     Button boton;
@@ -38,7 +40,9 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_config);
+        setContentView(R.layout.activity_config);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -50,12 +54,11 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         camarera6 = (TextView) findViewById(R.id.Nombre6);
 
         boton = (Button) findViewById(R.id.botonconfig);
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner1);
         divCheck = (CheckBox) findViewById(R.id.Div);
         restCheck = (CheckBox) findViewById(R.id.Rest);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item,nCamareras);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,nCamareras);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -64,12 +67,12 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         divCheck.setChecked(prefs.getBoolean("divCheck", false));
         restCheck.setChecked(prefs.getBoolean("restCheck", false));
 
-        camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
-        camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
-        camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
-        camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
-        camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
-        camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
+        camarera1.setText(prefs.getString("Nombre1",getString(R.string.worker) + "1"));
+        camarera2.setText(prefs.getString("Nombre2",getString(R.string.worker) + "2"));
+        camarera3.setText(prefs.getString("Nombre3",getString(R.string.worker) + "3"));
+        camarera4.setText(prefs.getString("Nombre4",getString(R.string.worker) + "4"));
+        camarera5.setText(prefs.getString("Nombre5",getString(R.string.worker) + "5"));
+        camarera6.setText(prefs.getString("Nombre6",getString(R.string.worker) + "6"));
 
         SeleccionarCamareras(0);
         Tutorial();
@@ -159,7 +162,7 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
                         .setTarget(divCheck)
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("Si todos tus empleados trabajan las mismas horas, marcando esta casilla harás que el dinero se divida igualitariamente")
+                        .setContentText("Si todos tus empleados trabajan las mismas horas, marcando esta casilla harás que el dinero se divida igualitariamente.")
                         .withRectangleShape()
                         .build()
         );
@@ -169,7 +172,16 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
                         .withRectangleShape()
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("Pulsa este boton para guardar los cambios y volver a la pantalla principal")
+                        .setContentText("Pulsa este boton para guardar los cambios y volver a la pantalla principal.")
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(findViewById(R.id.toolbar))
+                        .withRectangleShape()
+                        .setDismissText("Siguiente")
+                        .setDismissTextColor(getResources().getColor(R.color.green))
+                        .setContentText("Por ultimo, desde aquí podrás volver a inicializar los tutoriales si lo deseas.")
                         .build()
         );
 
@@ -204,7 +216,10 @@ public class SimpleConfig extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.action_reset_tutorial) {
             MaterialShowcaseView.resetAll(getBaseContext());
             Toast.makeText(getApplicationContext(),"Tutorial reiniciado", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

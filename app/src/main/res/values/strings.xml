@@ -1,14 +1,19 @@
 <resources>
     <string name="app_name">WaiterTip</string>
-    <string name="action_settings">Ajustes</string>
+    <string name="config">Ajustes</string>
     <string name="about">Acerca de</string>
-    <string name="aviso">Tienes que habilitar empleados para que esto funcione, puedes hacerlo en el menú de la esquina superior derecha.</string>
-    <string name="trabajador">Empleado</string>
-    <string name="dinero">Dinero</string>
-    <string name="horas">Horas</string>
-    <string name="resta">Resta</string>
-    <string name="division_igualitaria">Division igualitaria</string>
+    <string name="warning">Tienes que habilitar empleados para que esto funcione, puedes hacerlo en el menú de la esquina superior derecha.</string>
+    <string name="worker">Empleado</string>
+    <string name="money">Dinero</string>
+    <string name="hours">Horas</string>
+    <string name="substraction">Resta</string>
+    <string name="disable_division">Division igualitaria</string>
     <string name="feedback">Sugerencias</string>
-    <string name="About1">Creado por Miguel Torres Moreno (alias Dranthos) con la ayuda inestimable de su familia.</string>
-    <string name="Reset_tutorials">Reiniciar tutoriales</string>
+    <string name="about1">Creado por Miguel Torres Moreno (alias Dranthos) con la ayuda inestimable de su familia.</string>
+    <string name="reset_tutorials">Reiniciar tutoriales</string>
+    <string name="disable_substraction">Deshabilitar restas</string>
+    <string name="save">Guardar</string>
+    <string name="name_hint">Introduce un nombre</string>
+    <string name="calculate">Calcular</string>
+    <string name="title_activity_config">Ajustes</string>
 </resources>

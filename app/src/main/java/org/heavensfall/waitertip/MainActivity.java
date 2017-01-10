@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
         boton = (Button) findViewById(R.id.Boton);
 
-        camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
-        camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
-        camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
-        camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
-        camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
-        camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
+        camarera1.setText(prefs.getString("Nombre1",getString(R.string.worker) + "1"));
+        camarera2.setText(prefs.getString("Nombre2",getString(R.string.worker) + "2"));
+        camarera3.setText(prefs.getString("Nombre3",getString(R.string.worker) + "3"));
+        camarera4.setText(prefs.getString("Nombre4",getString(R.string.worker) + "4"));
+        camarera5.setText(prefs.getString("Nombre5",getString(R.string.worker) + "5"));
+        camarera6.setText(prefs.getString("Nombre6",getString(R.string.worker) + "6"));
 
         GrabData();
         SeleccionarCamareras();
@@ -154,12 +154,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         int cantidad = prefs.getInt("NumeroCamareras",1);
 
-        camarera1.setText(prefs.getString("Nombre1",getString(R.string.trabajador) + "1"));
-        camarera2.setText(prefs.getString("Nombre2",getString(R.string.trabajador) + "2"));
-        camarera3.setText(prefs.getString("Nombre3",getString(R.string.trabajador) + "3"));
-        camarera4.setText(prefs.getString("Nombre4",getString(R.string.trabajador) + "4"));
-        camarera5.setText(prefs.getString("Nombre5",getString(R.string.trabajador) + "5"));
-        camarera6.setText(prefs.getString("Nombre6",getString(R.string.trabajador) + "6"));
+        camarera1.setText(prefs.getString("Nombre1",getString(R.string.worker) + "1"));
+        camarera2.setText(prefs.getString("Nombre2",getString(R.string.worker) + "2"));
+        camarera3.setText(prefs.getString("Nombre3",getString(R.string.worker) + "3"));
+        camarera4.setText(prefs.getString("Nombre4",getString(R.string.worker) + "4"));
+        camarera5.setText(prefs.getString("Nombre5",getString(R.string.worker) + "5"));
+        camarera6.setText(prefs.getString("Nombre6",getString(R.string.worker) + "6"));
         divCheck = prefs.getBoolean("divCheck", false);
         restCheck = prefs.getBoolean("restCheck", false);
 
@@ -177,11 +177,11 @@ public class MainActivity extends AppCompatActivity {
             nombres.get(i).setEnabled(true);
             if(!divCheck) {                         //Compruebo si esta habilitada la division igualitaria
                 horas.get(i).setEnabled(true);
-                horas.get(i).setHint(getString(R.string.horas));
+                horas.get(i).setHint(getString(R.string.hours));
             }
             if (!restCheck) {                       //Compruebo si estan habilitadas las restas
                 restas.get(i).setEnabled(true);
-                restas.get(i).setHint(getString(R.string.resta));
+                restas.get(i).setHint(getString(R.string.substraction));
             }
         }
         //Si hay 0 camareras, muestro el aviso
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                     .setMessage("Para que esto funcione debe haber empleados activos")
                     .setPositiveButton("Ir a configuración", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(((Dialog) dialog).getContext(), SimpleConfig.class);
+                            Intent intent = new Intent(((Dialog) dialog).getContext(), Config.class);
                             startActivityForResult(intent, 1);
                         }
                     })
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SimpleConfig.class);
+            Intent intent = new Intent(this, Config.class);
             startActivityForResult(intent, 1);
         }
         if(id == R.id.action_about){
@@ -341,7 +341,8 @@ public class MainActivity extends AppCompatActivity {
                         .setDelay(500)
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("Aqui va el dinero")
+                        .setContentText("Bienvenido a WaiterTip, con este breve tutorial te enseñaremos a utilizar la app de forma sencilla y en muy pocos pasos. \n\n" +
+                                "En el recuadro seleccionado mas arriba tienes que introducir el dinero a repartir.")
                         .withRectangleShape()
                         .build()
         );
@@ -350,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
                         .setTarget(camarera1)
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("A cada empleado le corresponde una fila")
+                        .setContentText("A cada empleado le corresponde una fila.")
                         .withRectangleShape(true)
                         .build()
         );
@@ -359,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
                         .setTarget(hora1)
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("Introduce aquí las horas que ha trabajado el empleado desde la ultima distribución del bote")
+                        .setContentText("Introduce aquí las horas que ha trabajado el empleado desde la ultima distribución del bote.")
                         .withRectangleShape()
                         .build()
         );
