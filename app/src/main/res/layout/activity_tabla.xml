@@ -23,42 +23,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista1"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textAlignment="viewStart"
+            android:layout_marginLeft="25dp" />
 
         <TextView
             android:text="TextView"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista2"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp" />
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista3"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp" />
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista4"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp" />
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista5"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp" />
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Lista6"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -22,7 +22,7 @@
         android:id="@+id/Dinero"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:hint="@string/dinero"
+        android:hint="@string/money"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -97,21 +97,9 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/C_Horas1"
-        android:textSize="18sp"
-        android:hint="@string/horas"
-        android:layout_width="60dp"
-        android:layout_alignTop="@+id/Camarera1"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/Camarera2" />
-
-    <EditText
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
         android:id="@+id/C_Horas2"
         android:textSize="18sp"
-        android:hint="@string/horas"
+        android:hint="@string/hours"
         android:layout_width="60dp"
         android:layout_alignBaseline="@+id/Camarera2"
         android:layout_alignBottom="@+id/Camarera2"
@@ -124,7 +112,7 @@
         android:ems="10"
         android:id="@+id/C_Horas3"
         android:textSize="18sp"
-        android:hint="@string/horas"
+        android:hint="@string/hours"
         android:layout_width="60dp"
         android:layout_alignBaseline="@+id/Camarera3"
         android:layout_alignBottom="@+id/Camarera3"
@@ -137,7 +125,7 @@
         android:ems="10"
         android:id="@+id/C_Horas4"
         android:textSize="18sp"
-        android:hint="@string/horas"
+        android:hint="@string/hours"
         android:layout_width="60dp"
         android:layout_above="@+id/Camarera5"
         android:layout_alignLeft="@+id/C_Horas3"
@@ -149,7 +137,7 @@
         android:ems="10"
         android:id="@+id/C_Horas5"
         android:textSize="18sp"
-        android:hint="@string/horas"
+        android:hint="@string/hours"
         android:layout_width="60dp"
         android:layout_below="@+id/C_Horas4"
         android:layout_alignLeft="@+id/C_Horas4"
@@ -161,7 +149,7 @@
         android:ems="10"
         android:id="@+id/C_Horas6"
         android:textSize="18sp"
-        android:hint="@string/horas"
+        android:hint="@string/hours"
         android:layout_width="60dp"
         android:layout_below="@+id/C_Horas5"
         android:layout_alignLeft="@+id/C_Horas5"
@@ -179,7 +167,7 @@
         android:layout_toEndOf="@+id/C_Horas2"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:hint="@string/resta" />
+        android:hint="@string/substraction" />
 
     <EditText
         android:layout_width="60dp"
@@ -187,7 +175,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/C_Resta2"
-        android:hint="@string/resta"
+        android:hint="@string/substraction"
         android:layout_alignBaseline="@+id/C_Horas2"
         android:layout_alignBottom="@+id/C_Horas2"
         android:layout_alignLeft="@+id/C_Resta3"
@@ -199,7 +187,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/C_Resta3"
-        android:hint="@string/resta"
+        android:hint="@string/substraction"
         android:layout_alignBaseline="@+id/C_Horas3"
         android:layout_alignBottom="@+id/C_Horas3"
         android:layout_alignLeft="@+id/C_Resta4"
@@ -211,7 +199,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/C_Resta4"
-        android:hint="@string/resta"
+        android:hint="@string/substraction"
         android:layout_alignBaseline="@+id/Camarera4"
         android:layout_alignBottom="@+id/Camarera4"
         android:layout_alignLeft="@+id/C_Resta5"
@@ -223,7 +211,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/C_Resta5"
-        android:hint="@string/resta"
+        android:hint="@string/substraction"
         android:layout_below="@+id/C_Resta4"
         android:layout_alignLeft="@+id/C_Resta6"
         android:layout_alignStart="@+id/C_Resta6" />
@@ -234,13 +222,13 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/C_Resta6"
-        android:hint="@string/resta"
+        android:hint="@string/substraction"
         android:layout_below="@+id/C_Resta5"
         android:layout_alignLeft="@+id/C_Resta1"
         android:layout_alignStart="@+id/C_Resta1" />
 
     <Button
-        android:text="Calcular"
+        android:text="@string/calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -248,16 +236,15 @@
         android:layout_below="@+id/C_Horas6"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="@string/aviso"
+    <EditText
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:id="@+id/Aviso"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/C_Horas1"
         android:textSize="18sp"
-        android:layout_alignTop="@+id/C_Horas6"
-        android:layout_centerHorizontal="true"
-        android:typeface="sans"
-        android:layout_width="200dp"
-        android:textAlignment="center" />
+        android:hint="@string/hours"
+        android:layout_width="60dp"
+        android:layout_below="@+id/Dinero"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
