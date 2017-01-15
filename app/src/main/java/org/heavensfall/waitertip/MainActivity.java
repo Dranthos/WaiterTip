@@ -369,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                         .setTarget(resta1)
                         .setDismissText("Siguiente")
                         .setDismissTextColor(getResources().getColor(R.color.green))
-                        .setContentText("Si el empleado ha hecho uso de su dinero asignado antes de la distribución, puedes restarselo intrudiciendo la cifra aquí.")
+                        .setContentText("Si el empleado ha hecho uso de su dinero asignado antes de la distribución, puedes restarselo introduciendo la cifra aquí.")
                         .withRectangleShape()
                         .build()
         );
